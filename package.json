@@ -1,0 +1,11 @@
+{
+	"name": "DevinO",
+	"version": "0.1.0",
+	"description": "Jeu de société adapté sur navigateur",
+	"homepage": "",
+	"email": "blender@iloveblender.com",
+	"man": "./README.md",
+	"dependencies": {
+		"express": "~3.0"
+	}
+}

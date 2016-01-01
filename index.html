@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Devin'O </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+		<link rel="Stylesheet" href="slider.css" />
+		<link rel="Stylesheet" href="index.css" />
+	</head>
+	<body>
+		<div id="body">
+			<div id="header"> Devin'O </div>
+			<div id="accueil">
+				<div class="accueil_option" id="jouer"> Jouer </div>
+				<div class="accueil_option" id="gotoRegles"> Règles du jeu </div>
+				<div class="accueil_option"> Connexion/<br />Inscription </div>
+				<div id="mentions_legales"><a href="mentions_legales.html"> Mentions légales </a></div>
+			</div>
+			<div id="regles_du_jeu">
+				<p class="retour"> Jouer ! </p>
+				<div style="clear: both"></div>
+				<p> <span class="purple">Devin'O</span> se joue entre deux équipes. Tour-à-tour, un membre d'une des deux équipes regarde le <span class="purple">Mot à deviner</span> et <span class="purple">l'Indice</span>. Il montre l'indice à son équipe. </p>
+				<p> Il dispose de 2 minutes pour faire deviner le mot à ses <span class="purple">coéquipiers</span>, mais attention : si l'équipe <span class="purple">adverse</span> trouve le mot en premier ou si le sablier arrive à sa fin, le point leur revient. </p>
+				<p> Afin d'aider ses coéquipiers, le joueur pourra s'aider de l'<span class="purple">Indice</span> pour faire deviner le mot à son équipe. </p>
+				<p>
+					Ex:<br />
+					<span class="purple">
+						Indice = Verre<br />Devin'O = Bordeaux
+					</span>
+				</p>
+				<p>
+					<span class="purple">Joueur:</span> Devin'O est une ville du sud, c'est aussi quelque chose qu'on peut mettre dans un Indice !<br />
+					<span class="purple">Équipe adverse:</span> Montpellier ?<br />
+					<span class="purple">Co-Équipier:</span> Bordeaux !
+				</p>
+				<div></div>
+			</div>
+			<div id="regles"> Règles du jeu </div>
+			<div id="devino" class="slider"> Mot à deviner </div>
+			<div id="indice" class="slider"> Indice </div>
+			<div id="temps"></div>
+			<div id="footer">
+				Mot Suivant
+<!-- 				<div id="victoire_adverse"> Victoire de l'équipe<br />adverse </div>
+				<div id="victoire_joueur"> Victoire de l'équipe<br />du joueur </div> -->
+			</div>
+		</div>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="slider.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>
