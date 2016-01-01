@@ -5,4 +5,4 @@ var server = http.createServer(app);
 
 app.use("/", express.static(__dirname+"/"));
 
-server.listen(80);
+server.listen(8080);
