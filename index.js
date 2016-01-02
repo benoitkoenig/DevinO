@@ -1,7 +1,3 @@
-if (document.URL != "http://www.devino.fr/") {
-	window.location.replace("http://www.devino.fr/");
-}
-
 $("#jouer").on("click", function() {
 	$("#accueil").css("display", "none");
 });
