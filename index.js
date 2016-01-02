@@ -1,5 +1,4 @@
 if (document.URL != "http://www.devino.fr/") {
-	alert("a");
 	window.location.replace("http://www.devino.fr/");
 }
 
