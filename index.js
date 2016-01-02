@@ -1,3 +1,5 @@
+console.log(document.URL);
+
 $("#jouer").on("click", function() {
 	$("#accueil").css("display", "none");
 });
