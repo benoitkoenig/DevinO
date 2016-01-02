@@ -1,4 +1,7 @@
-console.log(document.URL);
+if (document.URL != "http://www.devino.fr/") {
+	alert("a");
+	window.location.replace("http://www.devino.fr/");
+}
 
 $("#jouer").on("click", function() {
 	$("#accueil").css("display", "none");
