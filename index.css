@@ -150,7 +150,18 @@ a
 	background-color: white;
 }
 
-@media all and (orientation: landscape) {
+@media screen and (min-width: 600px) and (orientation: landscape) {
+
+	#body {
+		position: absolute;
+		width: 70%;
+		top: 0%;
+		left: 15%;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width: 1000px) and (orientation: landscape) {
 
 	#body {
 		position: absolute;
