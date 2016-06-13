@@ -15,6 +15,7 @@ body
 	font-family: "riffic";
 	text-align: center;
 	color: #444;
+	overflow: hidden;
 }
 
 #header
@@ -54,7 +55,7 @@ a
 
 #mentions_legales
 {
-	position: absolute;
+	position: fixed;
 	bottom: 5px;
 	left: 10px;
 	color: #888;
@@ -112,6 +113,7 @@ a
 
 #temps
 {
+	display: none;
 	color: #111;
 	margin-top: 40px;
 	color: #7A1BCC;
@@ -128,6 +130,7 @@ a
 
 #footer
 {
+	display: none;
 	position: absolute;
 	bottom: -60px;
 	left: 0px;
@@ -146,6 +149,7 @@ a
 	left: 0%;
 	height: 100%;
 	background-color: white;
+	overflow: hidden;
 }
 
 @media screen and (min-width: 600px) and (orientation: landscape) {
@@ -167,5 +171,21 @@ a
 		top: 0%;
 		left: 30%;
 		height: 100%;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	#body {
+		overflow: auto;
+	}
+
+	#footer {
+		position: relative;
+		margin-top: 20px;
+		bottom: 0px;
+	}
+
+	.cache {
+		visibility: hidden;
 	}
 }

@@ -1,13 +1,19 @@
 $("#jouer").on("click", function() {
+	$("#temps").css("display", "block");
+	$("#footer").css("display", "block");
 	$("#accueil").css("display", "none");
 });
 
 $("#gotoRegles").on("click", function() {
+	$("#temps").css("display", "none");
+	$("#footer").css("display", "none");
 	$("#accueil").css("display", "none");
 	$("#regles_du_jeu").css("display", "block");
 });
 
 $("#header").on("click", function() {
+	$("#temps").css("display", "none");
+	$("#footer").css("display", "none");
 	$("#accueil").css("display", "block");
 	$("#regles_du_jeu").css("display", "none");
 });
@@ -54,7 +60,7 @@ var Relance = function() {
 	}
 	devino = devinos[0];
 	indice = indices[0];
-	$("#footer").animate({"bottom": "-60px"}, 100);
+	$("#footer").animate({"bottom": "-60px"}, {duration: 100, complete: function() {$("#footer").css("visibility", "hidden")}});
 	$(".slider_champ").animate(
 		{"margin-left": "110%"},
 		100,
@@ -77,10 +83,14 @@ $("#footer").on("click", function() {
 });
 
 $(".retour").on("click", function() {
+	$("#temps").css("display", "block");
+	$("#footer").css("display", "block");
 	$("#regles_du_jeu").css("display", "none");
 });
 
 $("#regles").on("click", function() {
+	$("#temps").css("display", "none");
+	$("#footer").css("display", "none");
 	$("#regles_du_jeu").css("display", "block");
 });
 
@@ -92,7 +102,7 @@ var afficher_temps = function(temps) {
 }
 
 $("#temps").on("click", function() {
-	$("#footer").animate({"bottom": "10px"}, 200);
+	$("#footer").css("visibility", "visible").animate({"bottom": "10px"}, 200);
 	if (interval == null) {
 		if (temps == 0) {
 			temps = 120;
