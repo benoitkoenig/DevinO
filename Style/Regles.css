@@ -1,0 +1,30 @@
+#regles
+{
+	text-align: left;
+	font-size: 25px;
+	overflow: auto;
+}
+
+.purple
+{
+	color: #7A1BCC;
+}
+
+#retourAuJeu
+{
+	float: right;
+	color: #888;
+	padding-right: 10px;
+	padding-top: 20px;
+	cursor: pointer;
+}
+
+#regles_du_jeu p
+{
+	margin: 10px;
+}
+
+#regles_du_jeu div
+{
+	height: 30px;
+}

@@ -5,20 +5,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-		<link rel="Stylesheet" href="slider.css" />
-		<link rel="Stylesheet" href="index.css" />
+		<link rel="Stylesheet" href="Style/Slider.css" />
+		<link rel="Stylesheet" href="Style/Index.css" />
+		<link rel="Stylesheet" href="Style/Regles.css" />
+		<link rel="Stylesheet" href="Style/Jeu.css" />
+		<link rel="Stylesheet" href="Style/Accueil.css" />
 	</head>
 	<body>
 		<div id="body">
 			<div id="header"> Décrimo </div>
-			<div id="accueil">
+			<div class="page" id="accueil">
 				<div class="accueil_option" id="jouer"> Jouer </div>
 				<div class="accueil_option" id="gotoRegles"> Règles du jeu </div>
 				<div class="accueil_option"> Connexion/<br />Inscription </div>
 				<div id="mentions_legales"><a href="mentions_legales.html"> Mentions légales </a></div>
 			</div>
-			<div id="regles_du_jeu">
-				<p class="retour"> Jouer ! </p>
+			<div class="page" id="regles">
+				<p id="retourAuJeu"> Jouer ! </p>
 				<div style="clear: both"></div>
 				<p> <span class="purple">Décrimo</span> se joue entre deux équipes. Tour-à-tour, un membre d'une des deux équipes regarde le <span class="purple">Mot à deviner</span> et <span class="purple">le Complice</span>. Il montre le Complice à son équipe. </p>
 				<p> Il dispose de 2 minutes pour faire deviner le mot à ses <span class="purple">coéquipiers</span>, mais attention : si l'équipe <span class="purple">adverse</span> trouve le mot en premier ou si le sablier arrive à sa fin, le point leur revient. </p>
@@ -36,11 +39,13 @@
 				</p>
 				<div></div>
 			</div>
-			<div id="regles"> Règles du jeu </div>
-			<div id="devino" class="slider"> Mot à deviner </div>
-			<div id="indice" class="slider"> Complice </div>
-			<div id="temps"></div>
-			<div id="footer" class="cache"> Mot Suivant </div>
+			<div class="page" id="jeu">
+				<div id="reglesDuJeu"> Règles du jeu </div>
+				<div id="devino" class="slider"> Mot à deviner </div>
+				<div id="indice" class="slider"> Complice </div>
+				<div id="temps"></div>
+				<div id="footer"> Mot Suivant </div>
+			</div>
 		</div>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="slider.js"></script>

@@ -1,0 +1,45 @@
+#reglesDuJeu
+{
+	margin: 20px 0px 40px 10px;
+	color: #888;
+	text-align: left;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#temps
+{
+	color: #111;
+	margin-top: 40px;
+	color: #7A1BCC;
+	font-size: 35px;
+	cursor: pointer;
+}
+
+@media screen and (max-height: 520px) {
+	#temps
+	{
+		margin-top: 20px;
+	}
+}
+
+#footer
+{
+	position: absolute;
+	bottom: -60px;
+	left: 0px;
+	right: 0px;
+	line-height: 20px;
+	color: #666;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+@media screen and (orientation: landscape) {
+	#footer {
+		position: relative;
+		margin-top: 20px;
+		bottom: 0px;
+		visibility: hidden;
+	}
+}

@@ -1,0 +1,27 @@
+#accueil
+{
+	font-size: 40px;
+}
+
+.accueil_option
+{
+	margin-top: 20%;
+	color: #222;
+	cursor: pointer;
+}
+
+a
+{
+	color: #7A1BCC;
+	text-decoration: none;
+}
+
+#mentions_legales
+{
+	position: fixed;
+	bottom: 5px;
+	left: 10px;
+	color: #888;
+	font-size: 25px;
+	cursor: pointer;
+}
