@@ -20,10 +20,11 @@ function displayFooter(show) {
 	if (show) {
 		$("#footer")
 			.css("visibility", "visible")
-			.animate({"bottom": "10px"}, 200);
+			.animate({"bottom": "10px", "margin-bottom": "70px"}, 200);
 	} else {
 		$("#footer").animate({
-			"bottom": "-60px"
+			"bottom": "-60px",
+			"margin-bottom": "0px"
 		}, {
 			duration: 100,
 			complete: function() {
@@ -78,7 +79,7 @@ var indices = [];
 var interval = null;
 var temps = 0;
 
-function Relance() {
+function relance() {
 	if (interval != null) {
 		clearInterval(interval);
 		interval = null;
@@ -124,14 +125,14 @@ $("#gotoRegles").on("click", function() { displayPage("regles"); });
 $("#reglesDuJeu").on("click", function() { displayPage("regles"); });
 $("#jouer").on("click", function() { displayPage("jeu"); });
 $("#retourAuJeu").on("click", function() { displayPage("jeu"); });
-$("#footer").on("click", Relance);
+$("#footer").on("click", relance);
 $("#temps").on("click", toggleTime);
 
 
 // Initialization
 
 $(document).ready(function() {
-	Handle_Sliders();
-	Relance();
+	handleSliders();
+	relance();
 	displayInit();
 });

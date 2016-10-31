@@ -1,46 +1,41 @@
-@font-face
-{
+@font-face {
 	font-family: riffic;
 	src: url(riffic.ttf);
 }
 
-body, html
-{
+body, html {
 	margin: 0px;
 	background-color: #EEE;
+	font-size: 25px;
 }
 
-body
-{
+body {
 	font-family: "riffic";
 	text-align: center;
 	color: #444;
 	overflow: hidden;
 }
 
-#header
-{
+#header {
 	display: none;
 	background-color: #7A1BCC;
-	font-size: 30px;
+	font-size: 1.2em;
 	color: white;
-	height: 45px;
-	padding-top: 15px;
+	height: 1.8em;
+	padding-top: 0.6em;
 	cursor: pointer;
 }
 
-.page
-{
+.page {
 	display: none;
 	position: absolute;
-	top: 60px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
+	top: 2.4em;
+	left: 0em;
+	bottom: 0em;
+	right: 0em;
 }
 
-#body
-{
+#body {
 	position: absolute;
 	width: 100%;
 	top: 0%;
@@ -51,7 +46,6 @@ body
 }
 
 @media screen and (min-width: 600px) and (orientation: landscape) {
-
 	#body {
 		position: absolute;
 		width: 70%;
@@ -62,7 +56,6 @@ body
 }
 
 @media screen and (min-width: 1000px) and (orientation: landscape) {
-
 	#body {
 		position: absolute;
 		width: 40%;

@@ -1,45 +1,41 @@
-#reglesDuJeu
-{
-	margin: 20px 0px 40px 10px;
+#reglesDuJeu {
+	margin: 0.8em 0em 1.6em 0.4em;
 	color: #888;
 	text-align: left;
-	font-size: 20px;
+	font-size: 0.8em;
 	cursor: pointer;
 }
 
-#temps
-{
+#temps {
 	color: #111;
-	margin-top: 40px;
+	margin-top: 1.6em;
 	color: #7A1BCC;
-	font-size: 35px;
+	font-size: 1.4em;
 	cursor: pointer;
 }
 
 @media screen and (max-height: 520px) {
-	#temps
-	{
-		margin-top: 20px;
+	#temps {
+		margin-top: 0.8em;
 	}
 }
 
-#footer
-{
+#footer {
 	position: absolute;
-	bottom: -60px;
-	left: 0px;
-	right: 0px;
-	line-height: 20px;
+	bottom: -2.4em;
+	left: 0em;
+	right: 0em;
+	line-height: 0.8em;
 	color: #666;
-	font-size: 30px;
+	font-size: 1.2em;
 	cursor: pointer;
 }
 
 @media screen and (orientation: landscape) {
 	#footer {
 		position: relative;
-		margin-top: 20px;
-		bottom: 0px;
+		margin-top: 0.8em;
+		bottom: 0em;
 		visibility: hidden;
 	}
 }

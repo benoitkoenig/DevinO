@@ -1,4 +1,4 @@
-function Handle_Sliders() {
+function handleSliders() {
 	var sliders = $(".slider");
 	for (var i=0 ; i<sliders.length ; i++) {
 		var titre = $(sliders[i]).html();
@@ -27,13 +27,29 @@ function Handle_Sliders() {
 		$(this).prev().animate({
 			"left": "30px"
 		}, 200);
+		if ($(this).parent().prev().width() != 0) {
+			var that = this;
+			$(this).parent().prev().animate({
+				"width": $(this).width() + "px"
+			}, {
+				duration: 200,
+				complete: function() {
+					$(that).parent().prev().css("width", "0px");
+				}
+			});
+		}
 
 	}).on("touchmove", function(ev) {
 		var X_cur = parseInt($(this).css("left")) + ev.originalEvent.touches[0].pageX;
-		var max = $(window).width()*0.8 - 60;
+		var max = $("#body").width()*0.8 - 60;
 		var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
 		$(this).css("left", left_cur + "px");
 		$(this).prev().css("left", (left_cur + 30) + "px");
+		if (left_cur == 0) {
+			$(this).parent().prev().css("width", "0px");
+		} else {
+			$(this).parent().prev().css("width", (left_cur + $(this).width()) + "px");
+		}
 	});
 
 	var isClicked = false;
@@ -54,6 +70,11 @@ function Handle_Sliders() {
 			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)), max);
 			$(element).css("left", left_cur + "px");
 			$(element).prev().css("left", (left_cur + 30) + "px");
+			if (left_cur == 0) {
+				$(element).parent().prev().css("width", "0px");
+			} else {
+				$(element).parent().prev().css("width", (left_cur + $(element).width()) + "px");
+			}
 		}
 	});
 	$(document).on("mouseup", function(ev) {
@@ -64,6 +85,16 @@ function Handle_Sliders() {
 		$(element).prev().animate({
 			"left": "30px"
 		}, 200);
+		if ($(element).parent().prev().width() != 0) {
+			$(element).parent().prev().animate({
+				"width": $(element).width() + "px"
+			}, {
+				duration: 200,
+				complete: function() {
+					$(element).parent().prev().css("width", "0px");
+				}
+			});
+		}
 		isClicked = false;
 	});	
 }
