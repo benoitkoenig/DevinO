@@ -1,3 +1,53 @@
+var Touch = function() {
+
+	var el = null;
+	var left_init;
+	var X_init;
+
+	this.start = function(element, evX) {
+		el = element;
+		$(el).addClass("active");
+		left_init = parseInt($(el).css("left"));
+		X_init = parseInt($(el).css("left")) + evX;
+	}
+
+	this.update = function(evX) {
+		if (el != null) {
+			var X_cur = parseInt($(el).css("left")) + evX;
+			var max = $("#body").width()*0.8 - 60;
+			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
+			$(el).css("left", left_cur + "px");
+			$(el).prev().css("left", (left_cur + 30) + "px");
+			if (left_cur == 0) {
+				$(el).parent().prev().css("width", "0px");
+			} else {
+				$(el).parent().prev().css("width", (left_cur + $(el).width()) + "px");
+			}
+		}
+	}
+
+	this.end = function() {
+		$(el).removeClass("active").animate({
+			"left": "0px"
+		}, 200);
+		$(el).prev().animate({
+			"left": "30px"
+		}, 200);
+		if ($(el).parent().prev().width() != 0) {
+			$(el).parent().prev().animate({
+				"width": $(el).width() + "px"
+			}, {
+				duration: 200,
+				complete: function() {
+					$(el).parent().prev().css("width", "0px");
+					el = null;
+				}
+			});
+		}
+	}
+
+};
+
 function handleSliders() {
 	var sliders = $(".slider");
 	for (var i=0 ; i<sliders.length ; i++) {
@@ -11,90 +61,29 @@ function handleSliders() {
 		$(".slider_cache>div").css("margin-left", left_for_slider + "px");
 	}
 
-	var X_init = 0;
-	var left_init = 0;
+	var touch = new Touch();
 
 	$(".slider_touch").on("touchstart", function(ev) {
 		ev.preventDefault();
-		$(this).addClass("active");
-		left_init = parseInt($(this).css("left"));
-		X_init = parseInt($(this).css("left")) + ev.originalEvent.touches[0].pageX;
+		touch.start(this, ev.originalEvent.touches[0].pageX);
 	}).on("touchend", function(ev) {
 		ev.preventDefault();
-		$(this).removeClass("active").animate({
-			"left": "0px"
-		}, 200);
-		$(this).prev().animate({
-			"left": "30px"
-		}, 200);
-		if ($(this).parent().prev().width() != 0) {
-			var that = this;
-			$(this).parent().prev().animate({
-				"width": $(this).width() + "px"
-			}, {
-				duration: 200,
-				complete: function() {
-					$(that).parent().prev().css("width", "0px");
-				}
-			});
-		}
-
+		touch.end();
 	}).on("touchmove", function(ev) {
-		var X_cur = parseInt($(this).css("left")) + ev.originalEvent.touches[0].pageX;
-		var max = $("#body").width()*0.8 - 60;
-		var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
-		$(this).css("left", left_cur + "px");
-		$(this).prev().css("left", (left_cur + 30) + "px");
-		if (left_cur == 0) {
-			$(this).parent().prev().css("width", "0px");
-		} else {
-			$(this).parent().prev().css("width", (left_cur + $(this).width()) + "px");
-		}
+		ev.preventDefault();
+		touch.update(ev.originalEvent.touches[0].pageX);
 	});
-
-	var isClicked = false;
-	var element = null;
 
 	$(".slider_touch").on("mousedown", function(ev) {
 		ev.preventDefault();
-		$(this).addClass("active");
-		left_init = parseInt($(this).css("left")) - parseInt($("#body").css("left"));
-		X_init = parseInt($(this).css("left")) + ev.clientX;
-		isClicked = true;
-		element = this;
+		touch.start(this, ev.clientX);
 	});
 	$("#body").on("mousemove", function(ev) {
-		if (isClicked) {
-			var X_cur = parseInt($(this).css("left")) + ev.clientX;
-			var max = $("#body").width()*0.8 - 60;
-			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)), max);
-			$(element).css("left", left_cur + "px");
-			$(element).prev().css("left", (left_cur + 30) + "px");
-			if (left_cur == 0) {
-				$(element).parent().prev().css("width", "0px");
-			} else {
-				$(element).parent().prev().css("width", (left_cur + $(element).width()) + "px");
-			}
-		}
+		ev.preventDefault();
+		touch.update(ev.clientX);
 	});
 	$(document).on("mouseup", function(ev) {
 		ev.preventDefault();
-		$(element).removeClass("active").animate({
-			"left": "0px"
-		}, 200);
-		$(element).prev().animate({
-			"left": "30px"
-		}, 200);
-		if ($(element).parent().prev().width() != 0) {
-			$(element).parent().prev().animate({
-				"width": $(element).width() + "px"
-			}, {
-				duration: 200,
-				complete: function() {
-					$(element).parent().prev().css("width", "0px");
-				}
-			});
-		}
-		isClicked = false;
+		touch.end();
 	});	
 }
