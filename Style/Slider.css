@@ -6,8 +6,8 @@
 	position: absolute;
 	margin-left: 10%;
 	width: 80%;
-	height: 2.4em;
-	border-radius: 1.2em;
+	height: calc(2.2em + 4px);
+	border-radius: 5em;
 	overflow: hidden;
 }
 
