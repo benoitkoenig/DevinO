@@ -18,19 +18,11 @@ function displayTime(temps) {
 
 function displayFooter(show) {
 	if (show) {
-		$("#footer")
-			.css("visibility", "visible")
-			.animate({"bottom": "10px", "margin-bottom": "70px"}, 200);
+		$("#footerHeight")
+			.animate({"height": "0%"}, 200);
 	} else {
-		$("#footer").animate({
-			"bottom": "-60px",
-			"margin-bottom": "0px"
-		}, {
-			duration: 100,
-			complete: function() {
-				$("#footer").css("visibility", "hidden")
-			}
-		});
+		$("#footerHeight")
+			.animate({"height": "100%"}, 200);
 	}
 }
 
@@ -122,10 +114,10 @@ function toggleTime() {
 
 $("#header").on("click", function() { displayPage("accueil"); });
 $("#gotoRegles").on("click", function() { displayPage("regles"); });
-$("#reglesDuJeu").on("click", function() { displayPage("regles"); });
+$("#reglesDuJeu>div").on("click", function() { displayPage("regles"); });
 $("#jouer").on("click", function() { displayPage("jeu"); });
 $("#retourAuJeu").on("click", function() { displayPage("jeu"); });
-$("#footer").on("click", relance);
+$("#footer>div:nth-child(2)").on("click", relance);
 $("#temps").on("click", toggleTime);
 
 

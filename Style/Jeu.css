@@ -1,41 +1,39 @@
+#jeu {
+	height: calc(100% - 2.4em);
+}
+
 #reglesDuJeu {
-	margin: 0.8em 0em 1.6em 0.4em;
 	color: #888;
 	text-align: left;
 	font-size: 0.8em;
+	height: 20%;
+}
+
+#reglesDuJeu>div {
+	padding: 0.8em 0em 0em 0.4em;
 	cursor: pointer;
+	display: inline-block;
 }
 
 #temps {
 	color: #111;
-	margin-top: 1.6em;
 	color: #7A1BCC;
 	font-size: 1.4em;
 	cursor: pointer;
-}
-
-@media screen and (max-height: 520px) {
-	#temps {
-		margin-top: 0.8em;
-	}
+	height: 10%;
 }
 
 #footer {
-	position: absolute;
-	bottom: -2.4em;
-	left: 0em;
-	right: 0em;
-	line-height: 0.8em;
-	color: #666;
-	font-size: 1.2em;
-	cursor: pointer;
+	height: 20%;
+	overflow: hidden;
 }
 
-@media screen and (orientation: landscape) {
-	#footer {
-		position: relative;
-		margin-top: 0.8em;
-		bottom: 0em;
-		visibility: hidden;
-	}
+#footerHeight {
+	height: 100%;
+}
+
+#footer>div:nth-child(2) {
+	margin-top: 0.4em;
+	cursor: pointer;
+	display: inline-block;
 }
