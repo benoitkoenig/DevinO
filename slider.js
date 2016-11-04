@@ -18,7 +18,7 @@ var Touch = function() {
 			var max = $(el).parent().width() - $(el).width() - 2*parseInt($(el).css("border-width"));
 			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
 			var unhidingWidth = left_cur == 0 ? 0 : left_cur + $(el).width();
-			alert(max, unhidingWidth, left_cur);
+			alert($(el).css("border-width"));
 			$(el).css("left", left_cur + "px");
 			$(el).prev().css("left", "calc(" + left_cur + "px + 1.2em)");
 			$(el).parent().prev().css("width", unhidingWidth + "px");
