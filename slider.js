@@ -1,6 +1,7 @@
 var Touch = function() {
 
 	var el = null;
+	var max;
 	var left_init;
 	var X_init;
 
@@ -13,16 +14,14 @@ var Touch = function() {
 
 	this.update = function(evX) {
 		if (el != null) {
+			console.log($(el).prev().width());
 			var X_cur = parseInt($(el).css("left")) + evX;
-			var max = $("#body").width()*0.8 - 60;
+			var max = $(el).parent().width() - $(el).width() - 2*parseInt($(el).css("border-width"));
 			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
+			var unhidingWidth = left_cur == 0 ? 0 : left_cur + $(el).width();
 			$(el).css("left", left_cur + "px");
-			$(el).prev().css("left", (left_cur + 30) + "px");
-			if (left_cur == 0) {
-				$(el).parent().prev().css("width", "0px");
-			} else {
-				$(el).parent().prev().css("width", (left_cur + $(el).width()) + "px");
-			}
+			$(el).prev().css("left", "calc(" + left_cur + "px + 1.2em)");
+			$(el).parent().prev().css("width", unhidingWidth + "px");
 		}
 	}
 
@@ -31,7 +30,7 @@ var Touch = function() {
 			"left": "0px"
 		}, 200);
 		$(el).prev().animate({
-			"left": "30px"
+			"left": "1.2em"
 		}, 200);
 		if ($(el).parent().prev().width() != 0) {
 			$(el).parent().prev().animate({
@@ -43,6 +42,8 @@ var Touch = function() {
 					el = null;
 				}
 			});
+		} else {
+			el = null;
 		}
 	}
 
@@ -52,13 +53,10 @@ function handleSliders() {
 	var sliders = $(".slider");
 	for (var i=0 ; i<sliders.length ; i++) {
 		var titre = $(sliders[i]).html();
-		$(sliders[i]).html("<div class='slider_titre'>" + titre + "</div>" +
+		$(sliders[i]).html(
 			"<div class='slider_champ slider_contenu'></div>" +
-			"<div class='slider_champ'><div class='slider_cache'><div> Glisser pour révéler </div></div><div class='slider_touch'><img src='fleche.png' /></div></div>"
+			"<div class='slider_champ'><div class='slider_cache'><div> " + titre + " </div></div><div class='slider_touch'><img src='fleche.png' /></div></div>"
 		);
-		var var_width = $("#body").width() > 360 ? 109 : 90; // Variable
-		var left_for_slider = $("#body").width()*0.8 / 2 - var_width;
-		$(".slider_cache>div").css("margin-left", left_for_slider + "px");
 	}
 
 	var touch = new Touch();
