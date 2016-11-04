@@ -1,24 +1,24 @@
 var Touch = function() {
 
 	var el = null;
-	var max;
+	var on = false;
 	var left_init;
 	var X_init;
 
 	this.start = function(element, evX) {
 		el = element;
-		$(el).addClass("active");
+		on = true;
 		left_init = parseInt($(el).css("left"));
 		X_init = parseInt($(el).css("left")) + evX;
+		$(el).addClass("active");
 	}
 
 	this.update = function(evX) {
-		if (el != null) {
+		if (on) {
 			var X_cur = parseInt($(el).css("left")) + evX;
-			var max = $(el).parent().width() - $(el).width() - 2*parseInt($(el).css("border-width"));
+			var max = $(el).parent().width() - $(el).width() - 4; // -2 is for the stroke
 			var left_cur = Math.min(Math.max(0, left_init + (X_cur - X_init)/2), max);
 			var unhidingWidth = left_cur == 0 ? 0 : left_cur + $(el).width();
-			alert($(el).css("border-width"));
 			$(el).css("left", left_cur + "px");
 			$(el).prev().css("left", "calc(" + left_cur + "px + 1.2em)");
 			$(el).parent().prev().css("width", unhidingWidth + "px");
@@ -26,6 +26,7 @@ var Touch = function() {
 	}
 
 	this.end = function() {
+		on = false;
 		$(el).removeClass("active").animate({
 			"left": "0px"
 		}, 200);
@@ -39,14 +40,10 @@ var Touch = function() {
 				duration: 200,
 				complete: function() {
 					$(el).parent().prev().css("width", "0px");
-					el = null;
 				}
 			});
-		} else {
-			el = null;
 		}
 	}
-
 };
 
 function handleSliders() {
