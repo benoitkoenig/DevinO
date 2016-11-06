@@ -19,17 +19,20 @@ body {
 #header {
 	display: none;
 	background-color: #7A1BCC;
-	font-size: 1.2em;
 	color: white;
 	height: 1.8em;
 	padding-top: 0.6em;
 	cursor: pointer;
 }
 
+#header>span {
+	font-size: 1.2em;
+}
+
 .page {
 	display: none;
 	position: absolute;
-	top: 2.8em;
+	top: 2.4em;
 	left: 0em;
 	bottom: 0em;
 	right: 0em;

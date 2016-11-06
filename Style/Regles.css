@@ -15,10 +15,6 @@
 	cursor: pointer;
 }
 
-#regles_du_jeu p {
+#regles p {
 	margin: 0.4em;
-}
-
-#regles_du_jeu div {
-	height: 1.2em;
 }
