@@ -1,4 +1,5 @@
 #jeu {
+	min-height: 320px;
 	height: calc(100% - 2.4em);
 }
 

@@ -113,9 +113,9 @@ function toggleTime() {
 // Views events initialization
 
 $("#header").on("click", function() { displayPage("accueil"); });
-$("#gotoRegles").on("click", function() { displayPage("regles"); });
+$("#gotoRegles>div").on("click", function() { displayPage("regles"); });
 $("#reglesDuJeu>div").on("click", function() { displayPage("regles"); });
-$("#jouer").on("click", function() { displayPage("jeu"); });
+$("#jouer>span").on("click", function() { displayPage("jeu"); });
 $("#retourAuJeu").on("click", function() { displayPage("jeu"); });
 $("#footer>div:nth-child(2)").on("click", relance);
 $("#temps").on("click", toggleTime);
