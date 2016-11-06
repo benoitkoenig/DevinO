@@ -13,15 +13,14 @@
 }
 
 a {
-	color: #7A1BCC;
+	color: #AAA;
 	text-decoration: none;
 }
 
 #mentions_legales {
 	position: fixed;
-	font-size: 0.6em;
+	font-size: 0.4em;
 	bottom: 0.2em;
 	left: 0.4em;
-	color: #888;
 	cursor: pointer;
 }

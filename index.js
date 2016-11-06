@@ -47,6 +47,30 @@ function displayInit() {
 
 // Models
 
+var devinos = [];
+var indices = [];
+var listDevinos;
+var listIndices;
+var interval = null;
+var temps = 0;
+var difficult = false;
+
+function toggleDifficulty() {
+	difficult = !difficult;
+	devinos = [];
+	indices = [];
+	if (difficult) {
+		listDevinos = ["Léopard", "Éléphant", "Ours", "Lézard", "Dinosaure", "Aigle", "Chat", "Chien", "Poisson", "Singe", "Loup", "Dragon", "Tigre", "Scarabée", "Renard", "Dauphin", "Kangourou", "Coccinelle", "Sapin", "Feuille", "Fleur", "Buisson", "Pommier", "Fruit", "Palmier", "Graine", "Racine", "Bois", "Reine", "Soldat", "Docteur", "Sportif", "Informaticien", "Vendeur", "Étudiant", "Enfant", "Père", "Retraité", "Cloche", "Bouteille", "Verre", "Plat", "Bocal", "Table", "Lampe", "Siège", "Téléphone", "Lit", "Rome", "Paris", "Londres", "Tokyo", "Lille", "Berlin", "New-York", "San Francisco", "Pékin", "Athènes", "Hawaii", "Brésil", "Jamaïque", "Californie", "Italie", "Canada", "Islande", "Grèce", "Madagascar", "Réunion", "Bordeaux", "Champagne", "Troyes", "Aoste", "Evian", "Munster", "Cadillac", "Inde", "Grenade", "Phare", "Tour", "Port", "Château", "Mine", "Restaurant", "Chalet", "Barrage", "Pont", "Hôtel", "Balle", "Gant", "Crosse", "Panier", "Patin", "Manette", "Raquette", "Batte", "Corde", "But", "Scène", "Guitare", "Jonglage", "Dessin", "Musique", "Danse", "Flûte", "Batterie", "Clavier", "Poésie", "Miel", "Crêpes", "Pizza", "Gâteau", "Burger", "Riz", "Pâtes", "Sushi", "Bonbon", "Pain", "Bateau", "Ski", "Avion", "Randonnée", "Vol", "Croisière", "Safari", "Plongée", "Excursion", "Escalade", "Guillaume", "Claire", "Pierre", "Thomas", "Anne", "Olivier", "Mehdi", "Max", "Loïc", "Paul", "Thé", "Café", "Jus", "Soda", "Vin", "Cola", "Bière", "Cru", "Sirop", "Lait", "Nuage", "Neige", "Iceberg", "Fumée", "Glace", "Vague", "Pluie", "Brume", "Vent", "Tornade", "Noël", "Vacances", "Voyage", "Cadeaux", "Fête", "Week-end", "Jeux", "Repas", "Surprise", "Fève", "Pirate", "Chevalier", "Astronaute", "Fée", "Princesse", "Magicien", "Pompier", "Détective", "Inventeur", "Saint", "Zéro", "Un", "Deux", "Sept", "Dix", "Vingt", "Cent", "Mille", "Demi", "Quart", "Nez", "Main", "Coeur", "Foie", "Tête", "Dos", "Bras", "Doigt", "Oeil", "Joue"];
+		listIndices = ["Bleu", "Nord", "L", "Gaulois", "Animal", "Feu", "Outil", "Espace", "Moi", "Rouge", "Sud", "M", "Étoile", "Végétal", "Froid", "Structure", "Temps", "Toi", "Vert", "Ville", "O", "Sorcier", "Fumée", "Chaleur", "Bâtiment", "Lui", "Jaune", "Région", "T", "Inconnu", "Pierre", "Chaud", "Livre", "Elle", "Violet", "Pays", "X", "Indice", "Bois", "Température", "Film", "Nous", "Rose", "Europe", "Lettre", "Métal", "Automne", "BD", "Vous", "Brun", "Est", "Verre", "Hiver", "Manga", "Eux", "Orange", "Ouest", "Eau", "Printemps", "Musique", "Blanc", "Continent", "Été", "Histoire", "Noir", "Île", "Année", "Magie", "Turquoise", "Passé", "Saison", "Métier", "Couleur", "Futur", "Mois", "Fiction", "Désert", "Semaine", "Montagne", "Jour", "Océan", "Nuit", "Mer", "Glace", "Pré", "Capitale", "Endroit", "Soleil", "Lune", "Planète", "Terre", "Équateur", "Maitre", "A"];
+		$("#difficulty>span").html("Difficile");
+	} else {
+		listDevinos = ["Léopard", "Éléphant", "Ours", "Lézard", "Dinosaure", "Aigle", "Chat", "Chien", "Poisson", "Singe", "Sapin", "Feuille", "Fleur", "Buisson", "Pommier", "Fruit", "Palmier", "Graine", "Racine", "Bois", "Rome", "Paris", "Londres", "Tokyo", "Lille", "Berlin", "New-York", "San Francisco", "Pékin", "Athènes", "Phare", "Tour", "Port", "Château", "Mine", "Restaurant", "Chalet", "Barrage", "Pont", "Hôtel", "Bateau", "Ski", "Avion", "Randonnée", "Vol", "Croisière", "Safari", "Plongée", "Excursion", "Escalade"];
+		listIndices = ["Bleu", "Rouge", "Vert", "Jaune", "Noir", "Nord", "Sud", "Ville", "Pays", "Mer", "Montagne", "Océan", "Soleil", "Île", "Futur", "Froid", "Automne", "Jour", "Nuit", "Chaud", "Bâtiment", "Livre", "Film", "Musique", "Manga"];
+		$("#difficulty>span").html("Facile");
+	}
+	relance();
+}
+
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
 
@@ -66,11 +90,6 @@ function shuffle(array) {
   return array;
 }
 
-var devinos = [];
-var indices = [];
-var interval = null;
-var temps = 0;
-
 function relance() {
 	if (interval != null) {
 		clearInterval(interval);
@@ -78,10 +97,10 @@ function relance() {
 	}
 	temps = 0;
 	if (devinos.length == 0) {
-		devinos = shuffle(["Léopard", "Éléphant", "Ours", "Lézard", "Dinosaure", "Aigle", "Chat", "Chien", "Poisson", "Singe", "Loup", "Dragon", "Tigre", "Scarabée", "Renard", "Dauphin", "Kangourou", "Coccinelle", "Sapin", "Feuille", "Fleur", "Buisson", "Pommier", "Fruit", "Palmier", "Graine", "Racine", "Bois", "Reine", "Soldat", "Docteur", "Sportif", "Informaticien", "Vendeur", "Étudiant", "Enfant", "Père", "Retraité", "Cloche", "Bouteille", "Verre", "Plat", "Bocal", "Table", "Lampe", "Siège", "Téléphone", "Lit", "Rome", "Paris", "Londres", "Tokyo", "Lille", "Berlin", "New-York", "San Francisco", "Pékin", "Athènes", "Hawaii", "Brésil", "Jamaïque", "Californie", "Italie", "Canada", "Islande", "Grèce", "Madagascar", "Réunion", "Bordeaux", "Champagne", "Troyes", "Aoste", "Evian", "Munster", "Cadillac", "Inde", "Grenade", "Phare", "Tour", "Port", "Château", "Mine", "Restaurant", "Chalet", "Barrage", "Pont", "Hôtel", "Balle", "Gant", "Crosse", "Panier", "Patin", "Manette", "Raquette", "Batte", "Corde", "But", "Scène", "Guitare", "Jonglage", "Dessin", "Musique", "Danse", "Flûte", "Batterie", "Clavier", "Poésie", "Miel", "Crêpes", "Pizza", "Gâteau", "Burger", "Riz", "Pâtes", "Sushi", "Bonbon", "Pain", "Bateau", "Ski", "Avion", "Randonnée", "Vol", "Croisière", "Safari", "Plongée", "Excursion", "Escalade", "Guillaume", "Claire", "Pierre", "Thomas", "Anne", "Olivier", "Mehdi", "Max", "Loïc", "Paul", "Thé", "Café", "Jus", "Soda", "Vin", "Cola", "Bière", "Cru", "Sirop", "Lait", "Nuage", "Neige", "Iceberg", "Fumée", "Glace", "Vague", "Pluie", "Brume", "Vent", "Tornade", "Noël", "Vacances", "Voyage", "Cadeaux", "Fête", "Week-end", "Jeux", "Repas", "Surprise", "Fève", "Pirate", "Chevalier", "Astronaute", "Fée", "Princesse", "Magicien", "Pompier", "Détective", "Inventeur", "Saint", "Zéro", "Un", "Deux", "Sept", "Dix", "Vingt", "Cent", "Mille", "Demi", "Quart", "Nez", "Main", "Coeur", "Foie", "Tête", "Dos", "Bras", "Doigt", "Oeil", "Joue"]);
+		devinos = shuffle(listDevinos);
 	}
 	if (indices.length == 0) {
-		indices = shuffle(["Bleu", "Nord", "L", "Gaulois", "Animal", "Feu", "Outil", "Espace", "Moi", "Rouge", "Sud", "M", "Étoile", "Végétal", "Froid", "Structure", "Temps", "Toi", "Vert", "Ville", "O", "Sorcier", "Fumée", "Chaleur", "Bâtiment", "Lui", "Jaune", "Région", "T", "Inconnu", "Pierre", "Chaud", "Livre", "Elle", "Violet", "Pays", "X", "Indice", "Bois", "Température", "Film", "Nous", "Rose", "Europe", "Lettre", "Métal", "Automne", "BD", "Vous", "Brun", "Est", "Verre", "Hiver", "Manga", "Eux", "Orange", "Ouest", "Eau", "Printemps", "Musique", "Blanc", "Continent", "Été", "Histoire", "Noir", "Île", "Année", "Magie", "Turquoise", "Passé", "Saison", "Métier", "Couleur", "Futur", "Mois", "Fiction", "Désert", "Semaine", "Montagne", "Jour", "Océan", "Nuit", "Mer", "Glace", "Pré", "Capitale", "Endroit", "Soleil", "Lune", "Planète", "Terre", "Équateur", "Maitre", "A"]);
+		indices = shuffle(listIndices);
 	}
 	displayTime("Start");
 	displayFooter(false);
@@ -113,10 +132,11 @@ function toggleTime() {
 // Views events initialization
 
 $("#header").on("click", function() { displayPage("accueil"); });
-$("#gotoRegles>div").on("click", function() { displayPage("regles"); });
+$("#gotoRegles>span").on("click", function() { displayPage("regles"); });
 $("#reglesDuJeu>div").on("click", function() { displayPage("regles"); });
 $("#jouer>span").on("click", function() { displayPage("jeu"); });
 $("#retourAuJeu").on("click", function() { displayPage("jeu"); });
+$("#difficulty").on("click", toggleDifficulty);
 $("#footer>div:nth-child(2)").on("click", relance);
 $("#temps").on("click", toggleTime);
 
@@ -124,6 +144,7 @@ $("#temps").on("click", toggleTime);
 // Initialization
 
 $(document).ready(function() {
+	toggleDifficulty();
 	handleSliders();
 	relance();
 	displayInit();
