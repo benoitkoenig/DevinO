@@ -53,7 +53,7 @@ var listDevinos;
 var listIndices;
 var interval = null;
 var temps = 0;
-var difficult = false;
+var difficult = true;
 
 function toggleDifficulty() {
 	difficult = !difficult;
